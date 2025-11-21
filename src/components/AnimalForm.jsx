@@ -2,8 +2,8 @@
 import { useState } from "react";
 import Alert from "./Alert.jsx";
 
-const TYPES = ["cow", "chicken", "sheep", "pig", "other"];
-const STATUSES = ["healthy", "review", "sick"];
+const TYPES = ["Vaca", "Pollo", "Oveja", "Cerdo", "Otro"];
+const STATUSES = ["Sano", "Revision", "Enfermo"];
 
 export default function AnimalForm({
   onSubmit,
@@ -25,21 +25,21 @@ export default function AnimalForm({
   function validate(v) {
     const e = {};
     if (!v.name || v.name.trim().length < 2) {
-      e.name = "Name is required (min 2 characters).";
+      e.name = "El nombre es obligatorio (mínimo 2 caracteres).";
     }
     if (!v.type || !TYPES.includes(v.type)) {
-      e.type = "Please select a valid animal type.";
+      e.type = "Por favor selecciona un tipo de animal.";
     }
     const ageNum = Number(v.age);
     if (!v.age || Number.isNaN(ageNum) || ageNum <= 0) {
-      e.age = "Age must be a number greater than 0.";
+      e.age = "La edad debe ser un número mayor que 0.";
     }
     const weightNum = Number(v.weight);
     if (!v.weight || Number.isNaN(weightNum) || weightNum <= 0) {
-      e.weight = "Weight must be a number greater than 0.";
+      e.weight = "El peso debe ser un número mayor que 0.";
     }
     if (!v.status || !STATUSES.includes(v.status)) {
-      e.status = "Please select a valid status.";
+      e.status = "Por favor selecciona un estado valido.";
     }
     return e;
   }
@@ -82,7 +82,7 @@ export default function AnimalForm({
       };
 
       const result = await onSubmit?.(payload);
-      setFormMessage("Animal created successfully 🐄");
+      setFormMessage("Animal creado con exito 🐄");
       // Opcional: limpiar el formulario
       setValues(initialValues);
       onSuccess?.(result ?? payload);

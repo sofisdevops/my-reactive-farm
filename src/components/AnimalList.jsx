@@ -14,7 +14,7 @@ export default function AnimalList({ animals = [], onSelect, children }) {
       {/* Empty state */}
       {isEmpty ? (
         <Alert variant="info">
-          No animals found. Add a new one to get started 🐾
+          No se han encontrado animales. Añade uno nuevo para empezar. 🐾
         </Alert>
       ) : (
         <ul

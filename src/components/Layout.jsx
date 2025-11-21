@@ -13,8 +13,7 @@ export default function Layout({ title, children }) {
 
       {/* Footer simple */}
       <footer className="mt-10 border-t border-gray-200 dark:border-neutral-700 pt-4 text-center text-sm text-gray-500 dark:text-gray-400">
-        © {new Date().getFullYear()} My Reactive Farm 🐄🌾 — Built with React &
-        Tailwind
+        © {new Date().getFullYear()} My REACTive Farm 🐄🌾 — Construido con React & Tailwind
       </footer>
     </main>
   );

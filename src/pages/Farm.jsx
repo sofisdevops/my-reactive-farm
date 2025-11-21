@@ -7,8 +7,8 @@ import AnimalForm from "../components/AnimalForm.jsx";
 import { getAnimals, createAnimal } from "../services/animalsApi.js";
 
 // Filtros disponibles
-const TYPES = ["all", "cow", "chicken", "sheep", "pig", "other"];
-const STATUSES = ["all", "healthy", "review", "sick"];
+const TYPES = ["Animal", "Vaca", "Pollo", "Oveja", "Cerdo", "otro"];
+const STATUSES = ["Estado", "Sano", "Revision", "Enfermo"];
 
 export default function Farm() {
   const [animals, setAnimals] = useState([]);
@@ -33,7 +33,7 @@ export default function Farm() {
         const data = await getAnimals();
         if (!cancelled) setAnimals(data);
       } catch (err) {
-        if (!cancelled) setLoadError("Failed to load animals. Please retry.");
+        if (!cancelled) setLoadError("No se han podido cargar los animales. Vuelva a intentarlo..");
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -53,7 +53,7 @@ export default function Farm() {
       setAnimals((prev) => [created, ...prev]);
       return created;
     } catch (err) {
-      setSubmitError("Could not create the animal. Try again.");
+      setSubmitError("No se pudo crear el animal. Inténtalo de nuevo");
       throw err; // mantiene el flujo del formulario
     }
   }
@@ -75,12 +75,12 @@ export default function Farm() {
   }, [animals, typeFilter, statusFilter, query]);
 
   return (
-    <Layout title="My Reactive Farm 🐄🌾">
+    <Layout title="My REACTive Farm 🐄🌾">
       {/* Loading / Error de carga */}
       {loading && <Loader message="Fetching animals from the farm…" />}
       {loadError && <Alert variant="error">{loadError}</Alert>}
 
-      {/* Contenido principal */}
+      {/* Contenido principal */} 
       {!loading && !loadError && (
         <div className="space-y-8">
           {/* Formulario controlado para crear animales */}
